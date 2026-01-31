@@ -25,7 +25,10 @@
     "password": "Şifre",
     "submit": "Gönder",
     "passwordHint": "En az 8 karakter, 1 büyük harf, 1 sayı.",
-    "loginError": "Giriş başarısız."
+    "loginError": "Giriş başarısız.",
+    "loginSuccess": "Giriş başarılı.",
+    "registerSuccess": "Kayıt başarılı.",
+    "registerError": "Kayıt başarısız."
   },
   "settings": {
     "title": "Ayarlar",

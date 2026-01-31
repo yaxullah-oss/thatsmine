@@ -3,12 +3,13 @@
 import { useTranslations } from 'next-intl';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
+import { useToast } from '@/components/ToastProvider';
 
 export default function LoginPage() {
   const t = useTranslations('auth');
+  const { addToast } = useToast();
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -18,14 +19,15 @@ export default function LoginPage() {
       redirect: false
     });
     if (result?.error) {
-      setError(t('loginError'));
+      addToast(t('loginError'), 'error');
+      return;
     }
+    addToast(t('loginSuccess'), 'success');
   };
 
   return (
     <div className="mx-auto max-w-md space-y-6">
       <h1 className="text-3xl font-semibold">{t('loginTitle')}</h1>
-      {error && <div className="card text-sm text-red-400">{error}</div>}
       <form onSubmit={handleSubmit} className="card space-y-4">
         <input
           className="w-full rounded-xl border border-border bg-transparent p-3"

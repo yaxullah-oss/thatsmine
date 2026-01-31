@@ -2,13 +2,14 @@
 
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import { useToast } from '@/components/ToastProvider';
 
 export default function RegisterPage() {
   const t = useTranslations('auth');
+  const { addToast } = useToast();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -18,13 +19,19 @@ export default function RegisterPage() {
       body: JSON.stringify({ email, username, password })
     });
     const data = await response.json();
-    setMessage(data.message ?? 'Kayıt tamamlandı.');
+    if (response.ok) {
+      addToast(t('registerSuccess'), 'success');
+      setEmail('');
+      setUsername('');
+      setPassword('');
+      return;
+    }
+    addToast(data.message ?? t('registerError'), 'error');
   };
 
   return (
     <div className="mx-auto max-w-md space-y-6">
       <h1 className="text-3xl font-semibold">{t('registerTitle')}</h1>
-      {message && <div className="card text-sm text-foreground/70">{message}</div>}
       <form onSubmit={handleSubmit} className="card space-y-4">
         <input
           className="w-full rounded-xl border border-border bg-transparent p-3"

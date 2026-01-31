@@ -7,7 +7,7 @@ import { authOptions } from '@/lib/auth';
 const threadSchema = z.object({
   title: z.string().min(3),
   content: z.string().min(10),
-  categoryId: z.string()
+  categorySlug: z.string()
 });
 
 export async function POST(request: Request) {
@@ -28,11 +28,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: 'User not found' }, { status: 404 });
   }
 
+  const category = await prisma.category.findUnique({
+    where: { slug: parsed.data.categorySlug }
+  });
+  if (!category) {
+    return NextResponse.json({ message: 'Category not found' }, { status: 404 });
+  }
+
   const thread = await prisma.thread.create({
     data: {
       title: parsed.data.title,
       content: parsed.data.content,
-      categoryId: parsed.data.categoryId,
+      categoryId: category.id,
       authorId: user.id
     }
   });

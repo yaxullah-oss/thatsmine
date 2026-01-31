@@ -1,8 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { PageTransition } from '@/components/PageTransition';
-import { NewsCard } from '@/components/NewsCard';
-import { ThreadCard } from '@/components/ThreadCard';
-import { mockNews, mockThreads } from '@/data/mock';
+import { HomeContent } from '@/components/HomeContent';
 
 export default async function Home({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations('home');
@@ -25,23 +23,11 @@ export default async function Home({ params: { locale } }: { params: { locale: s
         </div>
       </section>
 
-      <section className="mb-16 space-y-6">
-        <h2 className="text-2xl font-semibold">{t('latestNews')}</h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {mockNews.map((news) => (
-            <NewsCard key={news.slug} locale={locale} news={news} />
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold">{t('trendingThreads')}</h2>
-        <div className="grid gap-6">
-          {mockThreads.map((thread) => (
-            <ThreadCard key={thread.id} locale={locale} thread={thread} />
-          ))}
-        </div>
-      </section>
+      <HomeContent
+        locale={locale}
+        latestNewsLabel={t('latestNews')}
+        trendingThreadsLabel={t('trendingThreads')}
+      />
     </PageTransition>
   );
 }
