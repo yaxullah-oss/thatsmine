@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "news": "Haberler",
+    "forum": "Forum",
+    "about": "Hakkında",
+    "login": "Giriş",
+    "register": "Kayıt Ol",
+    "profile": "Profil",
+    "settings": "Ayarlar",
+    "logout": "Çıkış"
+  },
+  "home": {
+    "heroTitle": "Kripto Haber & Topluluk Merkezi",
+    "heroSubtitle": "Seçilmiş haberler, trend analizleri ve forum tartışmaları.",
+    "latestNews": "Son Haberler",
+    "trendingThreads": "Trend Konular",
+    "marketWidget": "Piyasa Özeti"
+  },
+  "auth": {
+    "loginTitle": "Giriş yap",
+    "registerTitle": "Hesap oluştur",
+    "email": "E-posta",
+    "username": "Kullanıcı adı",
+    "password": "Şifre",
+    "submit": "Gönder",
+    "passwordHint": "En az 8 karakter, 1 büyük harf, 1 sayı.",
+    "loginError": "Giriş başarısız."
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "theme": "Tema",
+    "language": "Dil"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "forum": "Forum",
+    "about": "About",
+    "login": "Log in",
+    "register": "Register",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log out"
+  },
+  "home": {
+    "heroTitle": "Crypto News & Community Hub",
+    "heroSubtitle": "Stay ahead with curated news, trend analysis, and forum discussions.",
+    "latestNews": "Latest News",
+    "trendingThreads": "Trending Threads",
+    "marketWidget": "Market Snapshot"
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "registerTitle": "Create account",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Submit",
+    "passwordHint": "At least 8 characters, 1 uppercase, 1 number.",
+    "loginError": "Login failed."
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "language": "Language"
+  }
+}
